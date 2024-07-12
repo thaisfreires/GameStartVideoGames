@@ -7,16 +7,16 @@ import java.util.Scanner;
 import static MenuAdmin.ColumnCounter.columnCounter;
 import static MenuAdmin.contarLinhas.contadorLinhas;
 
-public class ConsultaFicheiros01 {
+public class MenuAdmin {
     public static String[][] CsvConverter(String path) throws FileNotFoundException {
 
-        String[][] matriz = new String[contadorLinhas(path)][columnCounter(path)];
+        String[][] matriz = new String[contadorLinhas(path)-1][columnCounter(path)];
 
         Scanner sc = new Scanner(new File(path));
 
         String row = sc.nextLine();
 
-        int lineCount = 1;
+        int lineCount = 0;
 
         while (sc.hasNextLine()) {
             row = sc.nextLine();

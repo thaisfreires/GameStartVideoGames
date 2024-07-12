@@ -8,7 +8,6 @@ public class ColumnCounter {
     public static int columnCounter(String path) throws FileNotFoundException {
         Scanner sc = new Scanner(new File(path));
 
-        int count = 0;
         String row;
         int colunas = 0;
 
