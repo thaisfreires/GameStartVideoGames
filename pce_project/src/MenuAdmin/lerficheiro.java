@@ -25,7 +25,7 @@ public class lerficheiro {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        consultarFicheiro("GameStart/GameStart_Clientes.csv");
+        consultarFicheiro("GameStart/CatalogoGrafico/mortalKombat.txt");
 
     }
 }

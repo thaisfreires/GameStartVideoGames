@@ -4,70 +4,64 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static MenuAdmin.ColumnCounter.columnCounter;
-import static MenuAdmin.contarLinhas.contadorLinhas;
+import static MenuAdmin.Funções.*;
+
 
 public class MenuAdmin {
-    public static String[][] CsvConverter(String path) throws FileNotFoundException {
-
-        String[][] matriz = new String[contadorLinhas(path)-1][columnCounter(path)];
-
-        Scanner sc = new Scanner(new File(path));
-
-        String row = sc.nextLine();
-
-        int lineCount = 0;
-
-        while (sc.hasNextLine()) {
-            row = sc.nextLine();
-            String[] splitRow = row.split(";");
-
-            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
-                matriz[lineCount][coluna] = splitRow[coluna];
-            }
-
-            lineCount++;
-        }
-        return matriz;
-
-    }
-    public static void imprimirMatriz(String[][] matriz)throws FileNotFoundException {
-        for (int linha = 0; linha < matriz.length; linha++) {
-            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
-                System.out.print(matriz[linha][coluna] + "\t|\t");
-            }
-            System.out.println();
-        }
-    }
-
-    public static void main(String[] args) throws FileNotFoundException {
+    /**
+            * Método que imprime o conteúdo de um ficheiro na consola.
+            *
+ * @throws FileNotFoundException Caso o ficheiro não exista
+ */
+    public static void menuAdmin() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
-        System.out.println("*****MENU ADMIN*****");
-        System.out.println();
         int opcao;
+        System.out.println("\n---- A D M I N ----\n");
 
         do {
-            System.out.println("<< Digite 1 para Clientes >>");
-            System.out.println("<< Digite 2 para Categorias >>");
-            System.out.println("<< Digite 3 para Vendas >>");
-            System.out.println("<< Digite 4 para Sair >>");
+
+            System.out.println("1. Abrir Ficheiros ");
+            System.out.println("2. Total de Vendas ");
+            System.out.println("3. Total de Lucro ");
+            System.out.println("4. Pesquisa de Clientes ");
+            System.out.println("5. Jogo mais caro ");
+            System.out.println("6. Melhores Clientes ");
+            System.out.println("0. Sair");
+            System.out.print("\nOpção número: ");
             opcao = input.nextInt();
             System.out.println();
 
             switch (opcao) {
                 case 1:
-                    imprimirMatriz(CsvConverter("GameStart/GameStart_Clientes.csv"));
+                    Ficheiro();
                     break;
                 case 2:
-                    imprimirMatriz(CsvConverter("GameStart/GameStart_Categorias.csv"));
+                    System.out.println("*****Total de Vendas GAME START: "+ valorVendas());
+                    System.out.println("\n****Número de Vendas: " + contadorLinhas("GameStart/GameStart_Vendas.csv"));
                     break;
                 case 3:
-                    imprimirMatriz(CsvConverter("GameStart/GameStart_Vendas.csv"));
+                    System.out.println("*****Total de Lucro GAME START: \n" + valorLucro());
                     break;
+                case 4:
+                    imprimirIdCliente();
+                    break;
+                case 5:
+                    System.out.println("***** Jogo mais caro GAMESTART: "+jogoMaisCaro());
+                    System.out.println("\nClientes que compraram: \n");
+                    clientesJogoMaisCaro();
+
+                    break;
+                case 6:
+                    melhorCliente();
+                    break;
+                case 0:
+                    break;
+
                 default:
+                    System.out.println("⚠\uFE0F⚠\uFE0F Opção Inválida ⚠\uFE0F⚠\uFE0F");
                     break;
             }
             System.out.println();
-        }while (opcao != 4);
+        }while (opcao != 0);
     }
 }
