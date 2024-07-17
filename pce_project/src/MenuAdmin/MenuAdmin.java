@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static MenuAdmin.Funções.*;
+import static MenuAdmin.lerficheiro.consultarFicheiro;
+import static MenuAdmin.Funções.imprimirPesquisa;
+import static MenuAdmin.Funções.pesquisa;
 
 
 public class MenuAdmin {
@@ -26,8 +29,9 @@ public class MenuAdmin {
             System.out.println("4. Pesquisa de Clientes ");
             System.out.println("5. Jogo mais caro ");
             System.out.println("6. Melhores Clientes ");
+            System.out.println("7. Pesquisar Jogo ");
             System.out.println("0. Sair");
-            System.out.print("\nOpção número: ");
+            System.out.print("\nOpção número: \n");
             opcao = input.nextInt();
             System.out.println();
 
@@ -54,6 +58,10 @@ public class MenuAdmin {
                 case 6:
                     melhorCliente();
                     break;
+                case 7:
+                    System.out.println("\nClientes que compraram esse jogo: \n");
+                    imprimirPesquisa();
+                    break;
                 case 0:
                     break;
 
@@ -63,5 +71,16 @@ public class MenuAdmin {
             }
             System.out.println();
         }while (opcao != 0);
+    }
+    /**
+     * Método que apresenta o copyright
+     */
+    public static void copyright() throws FileNotFoundException {
+        consultarFicheiro("GameStart/GameStart_Copyright.txt");
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        menuAdmin();
+        copyright();
     }
 }

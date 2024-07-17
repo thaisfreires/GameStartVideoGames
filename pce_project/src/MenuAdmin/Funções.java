@@ -183,7 +183,6 @@ public class Funções {
      */
     public static void imprimirIdCliente() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
-        Scanner sc = new Scanner(new File("GameStart/GameStart_Clientes.csv"));
         System.out.print("ID CLIENTE: ");
         int id = input.nextInt();
         idCliente(id);
@@ -260,6 +259,42 @@ public class Funções {
             total += valorGasto;
         }
         return valorMaior;
+    }
+    public static void pesquisa(String nomeJogo) throws FileNotFoundException {
+        String[][] clientes = (CsvConverter("GameStart/GameStart_Clientes.csv"));
+        String[][] vendas = (CsvConverter("GameStart/GameStart_Vendas.csv"));
+
+        String id, jogo, idCliente;
+
+        for (int linhaMatrizVendas = 0; linhaMatrizVendas < vendas.length; linhaMatrizVendas++) {
+            idCliente = vendas[linhaMatrizVendas][1];
+            jogo = vendas[linhaMatrizVendas][4];
+
+            if (nomeJogo.equalsIgnoreCase(jogo)) {
+                for (int linhaMatrizClientes = 0; linhaMatrizClientes < clientes.length; linhaMatrizClientes++) {
+                    id = clientes[linhaMatrizClientes][0];
+
+                    if (id.equals(idCliente)) {
+
+                        String nome = clientes[linhaMatrizClientes][1];
+                        String telemovel = clientes[linhaMatrizClientes][2];
+                        String email = clientes[linhaMatrizClientes][3];
+
+                        System.out.println("Nome: " + nome + " || Telemóvel: " + telemovel + " || Email: " + email);
+
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    public static void imprimirPesquisa() throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite o nome do Jogo- \n");
+        String nomeJogo = input.nextLine();
+        pesquisa(nomeJogo);
     }
 
 }

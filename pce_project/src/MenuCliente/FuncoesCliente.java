@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static MenuAdmin.Funções.*;
 import static MenuAdmin.lerficheiro.consultarFicheiro;
-import static MenuCliente.catalogoJogos.jogos;
+import static MenuCliente.FuncoesCliente.jogos;
 
 public class FuncoesCliente {
 
@@ -48,8 +48,10 @@ public class FuncoesCliente {
                 case 4:
                     ultimoPrimeiroJogo();
                     break;
+                case 0:
+                    break;
                 default:
-                    copyright();
+                    System.out.println("⚠\uFE0F⚠\uFE0F Opção Inválida ⚠\uFE0F⚠\uFE0F");
                     break;
             }
             System.out.println();
@@ -147,6 +149,8 @@ public class FuncoesCliente {
                 case 7:
                     consultarFicheiro("GameStart/CatalogoGrafico/witcher3.txt");
                     break;
+                case 8:
+                    break;
                 default:
                     break;
             }
@@ -191,26 +195,31 @@ public class FuncoesCliente {
      *
      * @throws FileNotFoundException Caso o arquivo não possa ser encontrado
      */
-    public class Registro {
-        public static void adicionarCliente() throws FileNotFoundException, IOException {
-            Scanner input = new Scanner(System.in);
 
-            System.out.println("---Novo Registro---");
-            System.out.println("Nome: ");
-            String nome = input.next();
-            System.out.println("Telemóvel: ");
-            String telemovel = input.next();
-            System.out.println("Email: ");
-            String email = input.next();
-            String registro = nome + ";" + telemovel + ";" + email;
+    public static void adicionarCliente() throws FileNotFoundException, IOException {
+        Scanner input = new Scanner(System.in);
 
-            FileWriter registrar = new FileWriter(new File("GameStart/GameStart_Clientes.csv"), true);
+        System.out.println("---Novo Registro---");
+        System.out.println("Nome: ");
+        String nome = input.next();
+        System.out.println("Telemóvel: ");
+        String telemovel = input.next();
+        System.out.println("Email: ");
+        String email = input.next();
+        String registro = nome + ";" + telemovel + ";" + email;
 
-            registrar.append("\n" + registro);
+        FileWriter registrar = new FileWriter(new File("GameStart/GameStart_Clientes.csv"), true);
 
-            registrar.close();
-            System.out.println("Registro adicionado com sucesso!"+registro);
-        }
+        registrar.append("\n" + registro);
+
+        registrar.close();
+        System.out.println("Registro adicionado com sucesso!"+registro);
+    }
+
+
+    public static void main(String[] args) throws FileNotFoundException {
+        menuCliente();
+        copyright();
     }
 }
 

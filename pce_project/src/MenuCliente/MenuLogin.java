@@ -6,7 +6,7 @@ import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import static MenuAdmin.MenuAdmin.menuAdmin;
-import static MenuCliente.FuncoesCliente.Registro.adicionarCliente;
+import static MenuCliente.FuncoesCliente.adicionarCliente;
 import static MenuCliente.FuncoesCliente.menuCliente;
 
 public class MenuLogin {
