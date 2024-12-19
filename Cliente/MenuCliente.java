@@ -7,6 +7,11 @@ import static Admin.Funções.copyright;
 import static Cliente.FuncoesCliente.*;
 
 public class MenuCliente {
+    /**
+     * Método que imprime o menu do Cliente.
+     *
+     * @throws FileNotFoundException Caso o ficheiro não exista
+     */
     public static void menuCliente() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         int opcao;

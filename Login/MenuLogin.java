@@ -4,38 +4,49 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static Admin.MenuAdmin.menuAdmin;
-import static Cliente.FuncoesCliente.adicionarCliente;
+import static Admin.Funções.copyright;
+import static Admin.MenuAdmin.admin;
 import static Cliente.MenuCliente.menuCliente;
 
 public class MenuLogin {
+    /**
+     * Método que gerencia o login do usuário.
+     *
+     * @throws FileNotFoundException Caso o ficheiro não exista
+     * @throws IOException Caso exista algum tipo de exceção
+     */
     public static void menuLogin() throws FileNotFoundException, IOException{
         Scanner input = new Scanner(System.in);
-        String password;
 
+        System.out.println("\nTIPO DE UTILIZADOR: \n");
+        int utilizador;
 
-        System.out.println("\nTIPO DE UTILIZADOR ( ADMIN || CLIENTE || REGISTRO): ");
-        String utilizador = input.next();
+        do {
 
-        if (utilizador.equalsIgnoreCase("CLIENTE")) {
-            menuCliente();
+            System.out.println("1. ADMIN ");
+            System.out.println("2. CLIENTE ");
+            System.out.println("0. Sair");
+            System.out.print("\nOpção número: ");
+            utilizador = input.nextInt();
+            System.out.println();
 
-        }
-        if (utilizador.equalsIgnoreCase("REGISTRO")) {
-            adicionarCliente();
-        }
+            switch (utilizador) {
+                case 1:
+                    admin();
+                    break;
+                case 2:
+                    menuCliente();
+                    break;
+                case 0:
+                    System.out.println("\n Volte Sempre! \n\n");
+                    copyright();
+                    break;
+                default:
+                    System.out.println("⚠\uFE0F⚠\uFE0F Opção Inválida ⚠\uFE0F⚠\uFE0F");
+                    break;
+            }
 
-        System.out.println("\nUSERNAME: ");
-        String username = input.next();
-        System.out.println("\nPASSWORD: ");
-        password = input.next();
-
-        if (utilizador.equalsIgnoreCase("ADMIN") && username.equals("admin") && password.equals("!password?456")) {
-            menuAdmin();
-        }
-        if (!password.equals("!password?456")) {
-            System.out.println("⚠\uFE0F⚠\uFE0F Wrong Password ⚠\uFE0F⚠\uFE0F");
-        }
-
+        } while (utilizador != 0);
     }
+
 }

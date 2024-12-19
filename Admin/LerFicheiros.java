@@ -34,7 +34,7 @@ public class LerFicheiros {
             System.out.println("<< 1 para CLIENTES >>");
             System.out.println("<< 2 para CATEGORIAS >>");
             System.out.println("<< 3 para VENDAS >>");
-            System.out.println("<< 4 para SAIR >>");
+            System.out.println("<< 4 para VOLTAR >>");
             System.out.println("***** Qual Ficheiro deseja abrir? ");
             opcao = input.nextInt();
             System.out.println();
@@ -50,7 +50,6 @@ public class LerFicheiros {
                     imprimirMatriz(CsvConverter("Ficheiros/GameStart_Vendas.csv"));
                     break;
                 default:
-                    copyright();
                     break;
             }
             System.out.println();

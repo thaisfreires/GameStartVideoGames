@@ -2,6 +2,7 @@ package Admin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import static Admin.LerFicheiros.consultarFicheiro;
@@ -150,9 +151,11 @@ public class Funções {
      */
     public static void imprimirIdCliente() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
+        System.out.println(" *** Pesquisar Cliente ***");
         System.out.print("ID CLIENTE: ");
         int id = input.nextInt();
         idCliente(id);
+        System.out.println();
     }
     /**
      * Método que imprime o jogo mais caro.
@@ -220,7 +223,7 @@ public class Funções {
                 }
             }
             if (valorGasto > total) {
-                System.out.println("\n----- Melhor Cliente -----\n");
+                System.out.println("\n **** Melhor Cliente **** \n");
                 System.out.println("ID Cliente: "+ id+ " || Nome: " +nome+ " || Telemóvel: "+telemovel+" || Email: "+email);
             }
             total += valorGasto;

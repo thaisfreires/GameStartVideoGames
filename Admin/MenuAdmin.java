@@ -10,10 +10,10 @@ import static Admin.LerFicheiros.ficheiro;
 
 public class MenuAdmin {
     /**
-            * Método que imprime o conteúdo de um ficheiro na consola.
-            *
- * @throws FileNotFoundException Caso o ficheiro não exista
- */
+     * Método que imprime o menu do usuário Admin.
+     *
+     * @throws FileNotFoundException Caso o ficheiro não exista
+     */
     public static void menuAdmin() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         int opcao;
@@ -69,5 +69,25 @@ public class MenuAdmin {
             }
             System.out.println();
         }while (opcao != 0);
+    }
+    public static boolean admin() throws FileNotFoundException {
+
+        boolean adminCorreto = false;
+        System.out.println("- Você selecionou ADMIN -");
+        Scanner input = new Scanner(System.in);
+        System.out.println("\nUSERNAME: ");
+        String username = input.next();
+        System.out.println("\nPASSWORD: ");
+        String password = input.next();
+
+        if (username.equalsIgnoreCase("ADMIN") && username.equals("admin") && password.equals("!password?456")) {
+            adminCorreto = true;
+            menuAdmin();
+        }
+        while(!password.equals("!password?456")) {
+            System.out.println("\n⚠\uFE0F⚠\uFE0F Wrong Password ⚠\uFE0F⚠\uFE0F\n");
+            break;
+        }
+        return adminCorreto;
     }
 }
