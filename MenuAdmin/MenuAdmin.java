@@ -1,13 +1,11 @@
 package MenuAdmin;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static MenuAdmin.Funções.*;
-import static MenuAdmin.lerficheiro.consultarFicheiro;
 import static MenuAdmin.Funções.imprimirPesquisa;
-import static MenuAdmin.Funções.pesquisa;
+import static MenuAdmin.LerFicheiros.ficheiro;
 
 
 public class MenuAdmin {
@@ -37,11 +35,11 @@ public class MenuAdmin {
 
             switch (opcao) {
                 case 1:
-                    Ficheiro();
+                    ficheiro();
                     break;
                 case 2:
                     System.out.println("*****Total de Vendas GAME START: "+ valorVendas());
-                    System.out.println("\n****Número de Vendas: " + contadorLinhas("GameStart/GameStart_Vendas.csv"));
+                    System.out.println("\n****Número de Vendas: " + contadorLinhas("Ficheiros/GameStart_Vendas.csv"));
                     break;
                 case 3:
                     System.out.println("*****Total de Lucro GAME START: \n" + valorLucro());
@@ -71,16 +69,5 @@ public class MenuAdmin {
             }
             System.out.println();
         }while (opcao != 0);
-    }
-    /**
-     * Método que apresenta o copyright
-     */
-    public static void copyright() throws FileNotFoundException {
-        consultarFicheiro("GameStart/GameStart_Copyright.txt");
-    }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        menuAdmin();
-        copyright();
     }
 }

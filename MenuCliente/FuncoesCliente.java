@@ -4,12 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import static MenuAdmin.Funções.*;
-import static MenuAdmin.lerficheiro.consultarFicheiro;
-import static MenuCliente.FuncoesCliente.jogos;
+import static MenuAdmin.LerFicheiros.consultarFicheiro;
 
 public class FuncoesCliente {
 
@@ -80,7 +78,7 @@ public class FuncoesCliente {
      * Método que imprime todos os títulos de jogos sem duplicados.
      */
     public static String[] jogos() throws FileNotFoundException {
-        String[][] vendas = (CsvConverter("GameStart/GameStart_Vendas.csv"));
+        String[][] vendas = (CsvConverter("Ficheiros/GameStart_Vendas.csv"));
         String[] jogosNaoDuplicados = new String[vendas.length];
 
         String jogoAtual;
@@ -129,25 +127,25 @@ public class FuncoesCliente {
 
             switch (opcao) {
                 case 1:
-                    consultarFicheiro("GameStart/CatalogoGrafico/callOfDuty.txt");
+                    consultarFicheiro("Ficheiros/CatalogoGrafico/callOfDuty.txt");
                     break;
                 case 2:
-                    consultarFicheiro("GameStart/CatalogoGrafico/fifa.txt");
+                    consultarFicheiro("Ficheiros/CatalogoGrafico/fifa.txt");
                     break;
                 case 3:
-                    consultarFicheiro("GameStart/CatalogoGrafico/hollowKnight.txt");
+                    consultarFicheiro("Ficheiros/CatalogoGrafico/hollowKnight.txt");
                     break;
                 case 4:
-                    consultarFicheiro("GameStart/CatalogoGrafico/minecraft.txt");
+                    consultarFicheiro("Ficheiros/CatalogoGrafico/minecraft.txt");
                     break;
                 case 5:
-                    consultarFicheiro("GameStart/CatalogoGrafico/mortalKombat.txt");
+                    consultarFicheiro("Ficheiros/CatalogoGrafico/mortalKombat.txt");
                     break;
                 case 6:
-                    consultarFicheiro("GameStart/CatalogoGrafico/overcooked.txt");
+                    consultarFicheiro("Ficheiros/CatalogoGrafico/overcooked.txt");
                     break;
                 case 7:
-                    consultarFicheiro("GameStart/CatalogoGrafico/witcher3.txt");
+                    consultarFicheiro("Ficheiros/CatalogoGrafico/witcher3.txt");
                     break;
                 case 8:
                     break;
@@ -156,22 +154,6 @@ public class FuncoesCliente {
             }
             System.out.println();
         } while (opcao != 8);
-    }
-
-    /**
-     * Método que imprime o conteudo de um ficheiro na consola
-     *
-     * @param path Caminho para o ficheiro
-     * @throws FileNotFoundException Caso o ficheiro não exista
-     */
-    public static void consultarFicheiro(String path) throws FileNotFoundException {
-
-        Scanner sc = new Scanner(new File(path));
-
-        while (sc.hasNext()) {
-            String linhaAtual = sc.nextLine();
-            System.out.println(linhaAtual);
-        }
     }
 
     public static void ultimoPrimeiroJogo() throws FileNotFoundException {
@@ -184,12 +166,7 @@ public class FuncoesCliente {
         }
         System.out.println("*****Último Jogo pela primeira vez: " + jogosNaoDuplicados[80]);
     }
-    /**
-     * Método que apresenta o copyright
-     */
-    public static void copyright() throws FileNotFoundException {
-        consultarFicheiro("GameStart/GameStart_Copyright.txt");
-    }
+
     /**
      * Método que adiciona um novo cliente ao arquivo CSV.
      *
@@ -208,18 +185,12 @@ public class FuncoesCliente {
         String email = input.next();
         String registro = nome + ";" + telemovel + ";" + email;
 
-        FileWriter registrar = new FileWriter(new File("GameStart/GameStart_Clientes.csv"), true);
+        FileWriter registrar = new FileWriter(new File("Ficheiros/GameStart_Clientes.csv"), true);
 
         registrar.append("\n" + registro);
 
         registrar.close();
         System.out.println("Registro adicionado com sucesso!"+registro);
-    }
-
-
-    public static void main(String[] args) throws FileNotFoundException {
-        menuCliente();
-        copyright();
     }
 }
 

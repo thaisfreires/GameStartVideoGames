@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static MenuCliente.FuncoesCliente.copyright;
+import static MenuAdmin.LerFicheiros.consultarFicheiro;
 
 
 public class Funções {
@@ -39,40 +39,7 @@ public class Funções {
             System.out.println();
         }
     }
-    /**
-     * Método que apresenta opções de ficheiros a serem impressos na consola..
-     */
-    public static void Ficheiro() throws FileNotFoundException {
-        Scanner input = new Scanner(System.in);
-        int opcao;
 
-        do {
-
-            System.out.println("<< 1 para CLIENTES >>");
-            System.out.println("<< 2 para CATEGORIAS >>");
-            System.out.println("<< 3 para VENDAS >>");
-            System.out.println("<< 4 para SAIR >>");
-            System.out.println("***** Qual Ficheiro deseja abrir? ");
-            opcao = input.nextInt();
-            System.out.println();
-
-            switch (opcao) {
-                case 1:
-                    imprimirMatriz(CsvConverter("GameStart/GameStart_Clientes.csv"));
-                    break;
-                case 2:
-                    imprimirMatriz(CsvConverter("GameStart/GameStart_Categorias.csv"));
-                    break;
-                case 3:
-                    imprimirMatriz(CsvConverter("GameStart/GameStart_Vendas.csv"));
-                    break;
-                default:
-                    copyright();
-                    break;
-            }
-            System.out.println();
-        }while (opcao != 4);
-    }
     /**
      * Método que calcula o número de colunas de um ficheiro.
      */
@@ -110,7 +77,7 @@ public class Funções {
      * Método que calcula e imprime o total de vendas e o valor total.
      */
     public static double valorVendas() throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("GameStart/GameStart_Vendas.csv"));
+        Scanner sc = new Scanner(new File("Ficheiros/GameStart_Vendas.csv"));
         double total = 0;
         String linha = sc.nextLine();
 
@@ -129,8 +96,8 @@ public class Funções {
      */
     public static double valorLucro() throws FileNotFoundException {
 
-        String[][] categoria = (CsvConverter("GameStart/GameStart_Categorias.csv"));
-        String[][] vendas = (CsvConverter("GameStart/GameStart_Vendas.csv"));
+        String[][] categoria = (CsvConverter("Ficheiros/GameStart_Categorias.csv"));
+        String[][] vendas = (CsvConverter("Ficheiros/GameStart_Vendas.csv"));
 
         String categoriaJogos1, categoriaJogos2;
         double lucro=0, valorVendas, porcentagemMargem;
@@ -159,7 +126,7 @@ public class Funções {
      */
     public static void idCliente(int num) throws FileNotFoundException {
 
-        Scanner sc = new Scanner(new File("GameStart/GameStart_Clientes.csv"));
+        Scanner sc = new Scanner(new File("Ficheiros/GameStart_Clientes.csv"));
 
         String conteudo = sc.nextLine();
         String[] linha;
@@ -191,7 +158,7 @@ public class Funções {
      * Método que imprime o jogo mais caro.
      */
     public static double jogoMaisCaro() throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("GameStart/GameStart_Vendas.csv"));
+        Scanner sc = new Scanner(new File("Ficheiros/GameStart_Vendas.csv"));
 
         String conteudo = sc.nextLine(); // comecei da linha 1 e tirei o cabeçalho
         String[] linha;
@@ -213,7 +180,7 @@ public class Funções {
 
     public static void clientesJogoMaisCaro() throws FileNotFoundException {
         double valorMaisCaro = jogoMaisCaro();
-        Scanner sc = new Scanner(new File("GameStart/GameStart_Vendas.csv"));
+        Scanner sc = new Scanner(new File("Ficheiros/GameStart_Vendas.csv"));
 
         String conteudo = sc.nextLine(); // comecei da linha 1 e tirei o cabeçalho
         String[] linha;
@@ -230,8 +197,8 @@ public class Funções {
         }
     }
     public static double melhorCliente() throws FileNotFoundException {
-        String[][] clientes = (CsvConverter("GameStart/GameStart_Clientes.csv"));
-        String[][] vendas = (CsvConverter("GameStart/GameStart_Vendas.csv"));
+        String[][] clientes = (CsvConverter("Ficheiros/GameStart_Clientes.csv"));
+        String[][] vendas = (CsvConverter("Ficheiros/GameStart_Vendas.csv"));
 
         double total = 0, valorMaior=0;
         String id, idValorGasto;
@@ -261,8 +228,8 @@ public class Funções {
         return valorMaior;
     }
     public static void pesquisa(String nomeJogo) throws FileNotFoundException {
-        String[][] clientes = (CsvConverter("GameStart/GameStart_Clientes.csv"));
-        String[][] vendas = (CsvConverter("GameStart/GameStart_Vendas.csv"));
+        String[][] clientes = (CsvConverter("Ficheiros/GameStart_Clientes.csv"));
+        String[][] vendas = (CsvConverter("Ficheiros/GameStart_Vendas.csv"));
 
         String id, jogo, idCliente;
 
@@ -295,6 +262,13 @@ public class Funções {
         System.out.print("Digite o nome do Jogo- \n");
         String nomeJogo = input.nextLine();
         pesquisa(nomeJogo);
+    }
+
+    /**
+     * Método que apresenta o copyright
+     */
+    public static void copyright() throws FileNotFoundException {
+        consultarFicheiro("Ficheiros/GameStart_Copyright.txt");
     }
 
 }
