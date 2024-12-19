@@ -1,10 +1,10 @@
-package MenuAdmin;
+package Admin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static MenuAdmin.LerFicheiros.consultarFicheiro;
+import static Admin.LerFicheiros.consultarFicheiro;
 
 
 public class Funções {

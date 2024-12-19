@@ -1,4 +1,4 @@
-package MenuCliente;
+package Cliente;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,55 +6,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static MenuAdmin.Funções.*;
-import static MenuAdmin.LerFicheiros.consultarFicheiro;
+import static Admin.Funções.*;
+import static Admin.LerFicheiros.consultarFicheiro;
 
 public class FuncoesCliente {
 
-    public static void menuCliente() throws FileNotFoundException {
-        Scanner input = new Scanner(System.in);
-        int opcao;
-        System.out.println("\n---- C L I E N T E ----\n");
 
-        do {
-
-            System.out.println("1. Procurar Estacionamento ");
-            System.out.println("2. Imprimir Catálogo de Jogos ");
-            System.out.println("3. Imprimir Catálogos Gráficos ");
-            System.out.println("4. Imprimir Jogo mais recente ");
-            System.out.println("0. Sair");
-            System.out.print("\nOpção número: ");
-            opcao = input.nextInt();
-            System.out.println();
-
-            switch (opcao) {
-                case 1:
-                    estacionamento();
-                    break;
-                case 2:
-                    String[] jogosNaoDuplicados = jogos();
-
-                    for (int i = 0; i < jogosNaoDuplicados.length; i++) {
-                        if (jogosNaoDuplicados[i] != null) {
-                            System.out.println(jogosNaoDuplicados[i]);
-                        }
-                    }
-                    break;
-                case 3:
-                    imprimirCatalogoGrafico();
-                    break;
-                case 4:
-                    ultimoPrimeiroJogo();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("⚠\uFE0F⚠\uFE0F Opção Inválida ⚠\uFE0F⚠\uFE0F");
-                    break;
-            }
-            System.out.println();
-        } while (opcao != 0);
-    }
     /**
      * Método que imprime os lugares de estacionamento vagos (números triangulares múltiplos de 5).
      */
@@ -70,7 +27,7 @@ public class FuncoesCliente {
                 return true;
             }
 
-            System.out.println("***** Estacionamento *****\nVaga disponível: \n" + triangulares);
+            System.out.println("***** Estacionamento *****\nVaga disponível: número " + triangulares);
         }
         return false;
     }
@@ -164,7 +121,7 @@ public class FuncoesCliente {
             if (jogosNaoDuplicados[i] != null) {
             }
         }
-        System.out.println("*****Último Jogo pela primeira vez: " + jogosNaoDuplicados[80]);
+        System.out.println("***** Último Jogo adicionado: " + jogosNaoDuplicados[80]);
     }
 
     /**

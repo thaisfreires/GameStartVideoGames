@@ -1,15 +1,15 @@
-package MenuLogin;
+package Login;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static MenuAdmin.MenuAdmin.menuAdmin;
-import static MenuCliente.FuncoesCliente.adicionarCliente;
-import static MenuCliente.FuncoesCliente.menuCliente;
+import static Admin.MenuAdmin.menuAdmin;
+import static Cliente.FuncoesCliente.adicionarCliente;
+import static Cliente.MenuCliente.menuCliente;
 
 public class MenuLogin {
-    public static void main(String[] args) throws FileNotFoundException, IOException{
+    public static void menuLogin() throws FileNotFoundException, IOException{
         Scanner input = new Scanner(System.in);
         String password;
 
@@ -19,12 +19,13 @@ public class MenuLogin {
 
         if (utilizador.equalsIgnoreCase("CLIENTE")) {
             menuCliente();
+
         }
         if (utilizador.equalsIgnoreCase("REGISTRO")) {
             adicionarCliente();
         }
 
-        System.out.println("\nUSERMAME: ");
+        System.out.println("\nUSERNAME: ");
         String username = input.next();
         System.out.println("\nPASSWORD: ");
         password = input.next();

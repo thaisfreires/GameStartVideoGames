@@ -1,11 +1,11 @@
-package MenuAdmin;
+package Admin;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static MenuAdmin.Funções.*;
-import static MenuAdmin.Funções.imprimirPesquisa;
-import static MenuAdmin.LerFicheiros.ficheiro;
+import static Admin.Funções.*;
+import static Admin.Funções.imprimirPesquisa;
+import static Admin.LerFicheiros.ficheiro;
 
 
 public class MenuAdmin {
